@@ -1,0 +1,71 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { model, models, Schema } from "mongoose";
+import type { Workspace } from "@/domain/entities/WorkspaceEntity";
+import type { IWorkspaceRepository } from "@/domain/repositories/IWorkspaceRepository";
+
+const workspaceSchema = new Schema(
+  {
+    name: String,
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform(_doc, ret) {
+        const { _id, __v, ...rest } = ret;
+        return {
+          ...rest,
+          id: _id.toString(),
+        };
+      },
+    },
+    toObject: {
+      virtuals: true,
+      transform(_doc, ret) {
+        const { _id, __v, ...rest } = ret;
+        return {
+          ...rest,
+          id: _id.toString(),
+        };
+      },
+    },
+  },
+);
+const WorkspaceModel = models.Workspace || model("Workspace", workspaceSchema);
+
+export class WorkspaceRepository implements IWorkspaceRepository {
+  async create(workspace: Workspace): Promise<Workspace> {
+    const newWorkspace = await WorkspaceModel.create(workspace);
+    return newWorkspace;
+  }
+
+  async find(): Promise<Workspace[]> {
+    return await WorkspaceModel.find();
+  }
+
+  async findById(id: string): Promise<Workspace | null> {
+    return await WorkspaceModel.findById(id);
+  }
+
+  async findByUserId(userId: string): Promise<Workspace[] | null> {
+    return await WorkspaceModel.find({ createdBy: userId });
+  }
+
+  async update(
+    id: string,
+    data: Partial<Workspace>,
+  ): Promise<Workspace | null> {
+    return await WorkspaceModel.findByIdAndUpdate(id, data, { new: true });
+  }
+
+  async delete(id: string): Promise<boolean> {
+    const result = await WorkspaceModel.findByIdAndDelete(id);
+    return result ? true : false;
+  }
+}
