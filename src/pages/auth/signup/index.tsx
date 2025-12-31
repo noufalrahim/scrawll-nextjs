@@ -1,5 +1,6 @@
 import { GalleryVerticalEnd } from "lucide-react";
 import { SignupFormCard } from "@/components/Cards";
+import { InstallPrompt } from "@/components/InstallPrompt";
 
 export default function SignupPage() {
   return (
@@ -13,6 +14,7 @@ export default function SignupPage() {
         </a>
         <SignupFormCard />
       </div>
+      <InstallPrompt />
     </div>
   );
 }
