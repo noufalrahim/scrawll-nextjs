@@ -185,14 +185,14 @@ export default function AppSidebar() {
 
         <SidebarGroup>
           <SidebarGroupLabel>Notes</SidebarGroupLabel>
-          <SidebarGroupAction title="Add Note">
-            <Plus
-              onClick={() => {
-                dispatch(setNote(null));
-                setOpen(true);
-              }}
-            />
-            <span className="sr-only">Add Note</span>
+          <SidebarGroupAction
+            title="Add Note"
+            onClick={() => {
+              dispatch(setNote(null))
+              setOpen(true)
+            }}
+          >
+            <Plus />
           </SidebarGroupAction>
           <SidebarGroupContent>
             {isFetchingNotes && (
