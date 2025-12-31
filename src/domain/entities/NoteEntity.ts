@@ -9,6 +9,7 @@ export class Note {
     public createdBy: Types.ObjectId,
     public users: Types.ObjectId[],
     public path: Types.ObjectId[],
+    public icon: string,
     public parent?: Types.ObjectId,
     public _id?: Types.ObjectId,
   ) {}

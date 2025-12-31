@@ -3,7 +3,6 @@ import type { TWorkspace } from "./TWorkspace";
 
 export type TNote = {
   id?: string;
-  emoji: string;
   title: string;
   content: string;
   workspace?: TWorkspace | string;
@@ -11,6 +10,7 @@ export type TNote = {
   users?: TUser[] | string[];
   parent?: TNote | string | null;
   children?: TNote[] | string[];
+  icon?: string;
   createdAt?: string;
   updatedAt?: string;
 };

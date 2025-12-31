@@ -75,13 +75,15 @@ export default function ExtSidebarNoteItem({
           ) : (
             <span className="w-3.5 shrink-0" />
           )}
-
-          {hasChildren ? (
-            <FileText className="h-3.5 w-3.5 shrink-0" />
-          ) : (
-            <File className="h-3.5 w-3.5 shrink-0" />
-          )}
-
+          {
+            note.icon ? (
+              <span>{note.icon}</span>
+            ) : hasChildren ? (
+              <FileText className="h-3.5 w-3.5 shrink-0" />
+            ) : (
+              <File className="h-3.5 w-3.5 shrink-0" />
+            )
+          }
           <span className="truncate text-xs leading-tight">{title}</span>
         </CollapsibleTrigger>
 

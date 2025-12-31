@@ -132,10 +132,10 @@ export default function AppSidebar() {
     createNote(
       {
         title: data.name,
+        icon: data.emoji,
         content:
           '[{"id":"68f749dc-29d0-448a-9cb8-63f943b3f097","type":"paragraph","props":{"backgroundColor":"default","textColor":"default","textAlignment":"left"},"content":[],"children":[]},{"id":"c7545fc9-3e81-4815-9034-bcbb176b581d","type":"paragraph","props":{"backgroundColor":"default","textColor":"default","textAlignment":"left"},"content":[],"children":[]}]',
         workspace: workspace.id,
-        emoji: data.emoji,
         createdBy: user.id!,
         parent: note?.id,
       },

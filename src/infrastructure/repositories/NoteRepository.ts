@@ -9,6 +9,7 @@ const noteSchema = new Schema(
   {
     title: String,
     content: String,
+    icon: String,
     workspaceId: {
       type: Schema.Types.ObjectId,
       ref: "Workspace",
