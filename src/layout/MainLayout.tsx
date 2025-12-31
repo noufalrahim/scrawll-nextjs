@@ -15,7 +15,7 @@ export default function MainLayout({
       <AppSidebar />
       <SidebarInset>
         <SidebarTrigger />
-        <main className="p-5 bg-white">{children}</main>
+        <main className="bg-white">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );
