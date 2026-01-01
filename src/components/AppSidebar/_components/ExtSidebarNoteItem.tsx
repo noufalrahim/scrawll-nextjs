@@ -21,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { setNote } from "@/redux/noteSlice";
+import { exportNote, setNote } from "@/redux/noteSlice";
 import type { RootState } from "@/redux/store";
 import { EUrl, type TNote } from "@/types";
 
@@ -106,6 +106,7 @@ export default function ExtSidebarNoteItem({
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" align="start">
               <DropdownMenuItem>Rename</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => dispatch(exportNote(note.id as string))}>Export as PDF</DropdownMenuItem>
               <DropdownMenuItem
                 className="text-red-600"
                 onClick={() => onDeleteNote(note.id as string)}
