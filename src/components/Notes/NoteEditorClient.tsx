@@ -12,7 +12,7 @@ import { useEffect, useRef } from "react";
 import { useModifyData } from "@/hooks/useModifyData";
 import { useReadData } from "@/hooks/useReadData";
 import type { TNote } from "@/types";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { clearExport } from "@/redux/noteSlice";
 
@@ -22,8 +22,6 @@ export default function NoteEditorClient() {
   const noteId = router.query.id as string | undefined;
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const viewRef = useRef<HTMLDivElement | null>(null);
-
-  const dispatch = useDispatch();
 
   const { data: notesData } = useReadData<{ data: TNote }>(
     "notes",
@@ -112,17 +110,8 @@ export default function NoteEditorClient() {
   };
 
   return (
-    <>
-      <button
-        onClick={exportPDF}
-        className="fixed top-4 right-4 z-50 rounded-md bg-black px-4 py-2 text-white"
-      >
-        Export PDF
-      </button>
-
-      <div ref={viewRef}>
-        <BlockNoteView editor={editor} theme="light" />
-      </div>
-    </>
+    <div ref={viewRef}>
+      <BlockNoteView editor={editor} theme="light" />
+    </div>
   );
 }
