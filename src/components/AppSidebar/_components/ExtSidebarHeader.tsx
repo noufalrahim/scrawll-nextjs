@@ -137,9 +137,16 @@ export default function ExtSidebarHeader() {
 
   return (
     <SidebarHeader>
-      <div className="flex items-center gap-2">
-        <p className="text-xl font-semibold tracking-tight">Syncly</p>
-      </div>
+    <SidebarHeader>
+  <div className="flex items-center gap-2">
+    <img
+      src="/favicon.ico"
+      alt="Scrawll"
+      className="h-5 w-5"
+    />
+    <p className="text-xl font-semibold tracking-tight">Scrawll</p>
+  </div>
+</SidebarHeader>
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
